@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Classifier</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Event Classifier</h1>
+            <p>Analyze life events with AI-powered insights</p>
+        </header>
+
+        <div class="input-section">
+            <textarea id="textInput" placeholder="Type or speak about what happened..." rows="4"></textarea>
+            <div class="button-group">
+                <button id="analyzeBtn" class="primary-btn">
+                    <span>Analyze</span>
+                    <svg class="spinner hidden" viewBox="0 0 50 50">
+                        <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4"></circle>
+                    </svg>
+                </button>
+                <button id="micBtn" class="mic-btn" title="Speech to text">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <line x1="12" y1="19" x2="12" y2="23"/>
+                        <line x1="8" y1="23" x2="16" y2="23"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="results" class="results-section hidden">
+            <!-- Primary Event -->
+            <div class="result-card primary-event-card">
+                <h3>🎯 Primary Event</h3>
+                <div class="primary-event">
+                    <span id="primaryEventName" class="event-name"></span>
+                    <div class="confidence-bar">
+                        <div id="primaryConfidenceBar" class="confidence-fill"></div>
+                    </div>
+                    <span id="primaryConfidence" class="confidence-text"></span>
+                </div>
+                <p id="interpretation" class="interpretation"></p>
+            </div>
+
+            <!-- Event Details Grid -->
+            <div class="details-grid">
+                <!-- Event Group -->
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <span class="detail-icon">📁</span>
+                        <h4>Event Group</h4>
+                    </div>
+                    <p id="eventGroup" class="detail-value"></p>
+                    <span id="eventGroupConf" class="detail-confidence"></span>
+                </div>
+
+                <!-- Emotion -->
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <span id="emotionIcon" class="detail-icon">💭</span>
+                        <h4>Emotion</h4>
+                    </div>
+                    <p id="emotion" class="detail-value"></p>
+                    <span id="emotionConf" class="detail-confidence"></span>
+                </div>
+
+                <!-- Tense -->
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <span class="detail-icon">⏰</span>
+                        <h4>Tense</h4>
+                    </div>
+                    <p id="tense" class="detail-value"></p>
+                    <span id="tenseConf" class="detail-confidence"></span>
+                </div>
+
+                <!-- Sarcasm -->
+                <div class="detail-card">
+                    <div class="detail-header">
+                        <span class="detail-icon">🙄</span>
+                        <h4>Sarcasm</h4>
+                    </div>
+                    <p id="sarcasm" class="detail-value"></p>
+                    <span id="sarcasmConf" class="detail-confidence"></span>
+                </div>
+            </div>
+
+            <!-- Sentiment & Certainty -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h4>Sentiment</h4>
+                    <div class="metric-bar">
+                        <div id="sentimentBar" class="metric-fill sentiment-fill"></div>
+                    </div>
+                    <div class="metric-labels">
+                        <span>Negative</span>
+                        <span id="sentimentValue" class="metric-value"></span>
+                        <span>Positive</span>
+                    </div>
+                </div>
+
+      
+
+            <!-- Alternative Events -->
+            <div id="alternativeEvents" class="alternative-events hidden">
+                <h4>Alternative Events</h4>
+                <div id="alternativeEventsList" class="alternative-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

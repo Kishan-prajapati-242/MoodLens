@@ -1,0 +1,14 @@
+{
+  "model_name": "microsoft/deberta-v3-base",
+  "max_length": 256,
+  "multi_event_threshold": 0.7,
+  "device": "cuda",
+  "num_classes": {
+    "event_type": 70,
+    "event_group": 3,
+    "emotion": 41,
+    "tense": 3,
+    "sarcasm": 2
+  },
+  "save_dir": "/content/drive/MyDrive/EC-model-v2"
+}
