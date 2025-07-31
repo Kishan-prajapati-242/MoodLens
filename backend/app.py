@@ -329,16 +329,11 @@ def predict_text(text, threshold=0.7):
 
 # Endpoints
 # Serve frontend files - ONLY mount on /static path, not root
-app.mount("/static", StaticFiles(directory="../frontend"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
-def root():
-    return {
-        "message": "Event Classifier API is running!",
-        "model": config.model_name,
-        "device": str(device),
-        "encoders_loaded": list(label_encoders.keys())
-    }
+async def serve_frontend():
+    return FileResponse('static/index.html')
 
 
 # Keep the original API info endpoint  
@@ -367,6 +362,7 @@ def predict(request: PredictionRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    print("\nStarting server on http://0.0.0.0:8000")
+    port = int(os.environ.get("PORT", 8000))
+    print(f"\nStarting server on 0.0.0.0:{port}")
     print("Your Event Classifier is ready! 🚀")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=port)

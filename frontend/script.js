@@ -1,5 +1,6 @@
 // API Configuration
-const API_URL = 'http://localhost:8000';  // Keep this for local testing
+const API_URL = window.location.origin;
+
 // DOM Elements
 const textInput = document.getElementById('textInput');
 const analyzeBtn = document.getElementById('analyzeBtn');
